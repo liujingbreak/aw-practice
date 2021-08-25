@@ -1,0 +1,25 @@
+
+.scope {
+  text-align: center;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  height: 100%;
+}
+.banner {
+  flex-grow: 0;
+  text-align: center;
+  img {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+.footerLine {
+  font-size: 0.8rem;
+  color: rgba(0,0,0,0.5);
+  font-style: italic;
+}
