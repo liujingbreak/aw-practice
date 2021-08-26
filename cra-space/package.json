@@ -18,8 +18,8 @@
     "@wfh/aw-main": "1.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "plink cra-start aw-main",
+    "build": "plink cra-build app aw-main",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

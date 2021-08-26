@@ -8,7 +8,7 @@ import {AnimatableRoutesProps} from '@wfh/doc-ui-common/client/animation/Animata
 // }, {fallback: <ShowTopLoading/>});
 
 const LazyLandingComponent = loadable(async () => {
-  return (await import('../containers/Landing')).default;
+  return (await import('../pages/Landing')).default;
 }, {fallback: <ShowTopLoading/>});
 
 // const SurfaceDemo = loadable(async () => {

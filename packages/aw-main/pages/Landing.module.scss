@@ -1,0 +1,86 @@
+@use "@wfh/doc-ui-common/client/material/theme";
+
+@mixin dialog-desktop() {
+  width: 400px;
+}
+
+.scope {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+
+  .sendBtn {
+    margin: 0 16px;
+    width: 100%;
+    display: flex;
+    > button {
+      flex: 1;
+    }
+  }
+}
+.banner {
+  text-align: center;
+  width: 40%;
+  padding: 6rem 0;
+}
+.bannerBg {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  img {
+    display: block;
+    position: absolute;
+    opacity: 0.2;
+    width: 100%;
+    z-index: -1;
+  }
+}
+.inviteDialogContent {
+  min-height: 250px;
+  // height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.doneDialogContent {
+  padding: 2rem 0;
+}
+.inviteForm {
+  flex: 0 0;
+}
+.errMsg {
+  flex: 0;
+  color: theme.$error;
+}
+
+.subtitle {
+  margin: 1.5rem 0;
+  color: rgba(0,0,0,0.5);
+}
+.footerLine {
+  font-size: 0.8rem;
+  color: rgba(0,0,0,0.5);
+  font-style: italic;
+}
+:global(.mdc-layout-size-desktop) {
+  .inviteForm {
+    @include dialog-desktop();
+  }
+}
+:global(.mdc-layout-size-tablet) {
+  .banner {
+    width: 66.7%;
+  }
+  .inviteForm {
+    @include dialog-desktop();
+  }
+}
+:global(.mdc-layout-size-phone) {
+  .banner {
+    width: 100%;
+  }
+}

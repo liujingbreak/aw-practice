@@ -9,3 +9,4 @@ node_modules
 /tsconfig.json
 *.bak
 /tslint.json
+/package-lock.json

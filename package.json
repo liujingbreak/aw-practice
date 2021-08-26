@@ -7,12 +7,14 @@
     "plink": "plink",
     "dev:init": "npm i && plink project add . && plink sync cra-space",
     "dev:init:with-plink": "node ${PLINK_REPO}/main/bin/link.js  && plink install && plink project add ${PLINK_REPO} . && plink sync cra-space",
-    "dev:start": "cd cra-space && plink cra-start aw-main",
+    "dev:proxy": "plink sync server-space && cd server-space && node app -c conf/devServerProxy.ts",
+    "dev:start": "plink sync cra-space && cd cra-space && plink cra-start --prop @wfh/cra-scripts.openBrowser=http://localhost:8080 aw-main",
     "lint": "eslint -c .eslintrc.js --ext .ts "
   },
   "author": "LJ",
   "license": "NOLICENSED",
-  "packages": ["packages"],
+  "packages": ["packages",
+    "server-space/conf"],
   "dependencies": {
     "@wfh/plink": "./tarballs/wfh-plink-0.11.18-4.tgz"
   },

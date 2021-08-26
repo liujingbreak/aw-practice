@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.activate = void 0;
+const plink_1 = require("@wfh/plink");
+const utils_1 = require("@wfh/assets-processer/dist/utils");
+const log = plink_1.log4File(__filename);
+function activate(ctx) {
+    log.info('API proxy server starting');
+    utils_1.setupHttpProxy('/api', 'https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com');
+}
+exports.activate = activate;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2VydmVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsic2VydmVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLHNDQUFzRDtBQUN0RCw0REFBZ0U7QUFFaEUsTUFBTSxHQUFHLEdBQUcsZ0JBQVEsQ0FBQyxVQUFVLENBQUMsQ0FBQztBQUVqQyxTQUFnQixRQUFRLENBQUMsR0FBcUI7SUFDNUMsR0FBRyxDQUFDLElBQUksQ0FBQywyQkFBMkIsQ0FBQyxDQUFDO0lBQ3RDLHNCQUFjLENBQUMsTUFBTSxFQUFFLDZEQUE2RCxDQUFDLENBQUM7QUFDeEYsQ0FBQztBQUhELDRCQUdDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtsb2c0RmlsZSwgRXh0ZW5zaW9uQ29udGV4dH0gZnJvbSAnQHdmaC9wbGluayc7XG5pbXBvcnQge3NldHVwSHR0cFByb3h5fSBmcm9tICdAd2ZoL2Fzc2V0cy1wcm9jZXNzZXIvZGlzdC91dGlscyc7XG5cbmNvbnN0IGxvZyA9IGxvZzRGaWxlKF9fZmlsZW5hbWUpO1xuXG5leHBvcnQgZnVuY3Rpb24gYWN0aXZhdGUoY3R4OiBFeHRlbnNpb25Db250ZXh0KSB7XG4gIGxvZy5pbmZvKCdBUEkgcHJveHkgc2VydmVyIHN0YXJ0aW5nJyk7XG4gIHNldHVwSHR0cFByb3h5KCcvYXBpJywgJ2h0dHBzOi8vbDk0d2MyMDAxaC5leGVjdXRlLWFwaS5hcC1zb3V0aGVhc3QtMi5hbWF6b25hd3MuY29tJyk7XG59XG4iXX0=

@@ -9,7 +9,7 @@
     "cra-app-entry": "index.tsx",
     "config-overrides-path": "config-overrides.ts"
   },
-  "sideEffects": true,
+  "sideEffects": false,
   "dependencies": {
     "axios-observable": "^1.1.3",
     "axios": "0.21.1",

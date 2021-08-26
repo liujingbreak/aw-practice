@@ -1,0 +1,12 @@
+
+.scope {
+  display: block;
+  margin-top: 1rem;
+
+  :global .mdc-text-field {
+    display: block;
+    margin: 0.5rem 0;
+  }
+}
+
+// https://github.com/css-modules/css-modules

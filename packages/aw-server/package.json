@@ -1,0 +1,11 @@
+{
+  "name": "@wfh/aw-server",
+  "version": "1.0.0",
+  "description": "A static assets server for production demonstration, a proxy server for development",
+  "main": "dist/server.js",
+  "plink": {
+    "type": ["server"]
+  },
+  "author": "LJ",
+  "license": "ISC"
+}
