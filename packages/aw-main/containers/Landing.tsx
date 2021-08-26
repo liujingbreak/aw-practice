@@ -4,6 +4,8 @@ import React from 'react';
 // import clsddp from 'classnames/dedupe';
 import styles from './Landing.module.scss';
 import {useAppLayout} from '@wfh/doc-ui-common/client/components/appLayout.state';
+import {Button} from '@wfh/doc-ui-common/client/material/Button';
+import {Dialog} from '@wfh/doc-ui-common/client/material/Dialog';
 // import bannerBg from './demo-assets.jpg';
 
 export type LandingProps = React.PropsWithChildren<{
@@ -24,7 +26,11 @@ const Landing: React.FC<LandingProps> = function(props) {
   return <div className={styles.scope}>
     <div className={styles.banner}>
       {/* <img src={bannerBg} alt='banner'/> */}
-      <h1>A better way to enjoy every day.</h1>
+      <h1>A better way</h1>
+      <h1>to enjoy every day.</h1>
+      <div className={styles.subtitle}>Be the first to know when we launch.</div>
+      <Button type='raised'>Request an invite</Button>
+      <Dialog/>
     </div>
   </div>;
 };

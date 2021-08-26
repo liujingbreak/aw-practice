@@ -4,6 +4,10 @@
   "description": "Airwallex interview practise",
   "private": true,
   "scripts": {
+    "plink": "plink",
+    "dev:init": "npm i && plink project add . && plink sync cra-space",
+    "dev:init:with-plink": "node ${PLINK_REPO}/main/bin/link.js  && plink install && plink project add ${PLINK_REPO} . && plink sync cra-space",
+    "dev:start": "cd cra-space && plink cra-start aw-main",
     "lint": "eslint -c .eslintrc.js --ext .ts "
   },
   "author": "LJ",
