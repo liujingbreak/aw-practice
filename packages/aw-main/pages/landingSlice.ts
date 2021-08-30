@@ -158,20 +158,21 @@ const releaseEpic = stateFactory.addEpic<{Landing: LandingState}>((action$, stat
       doneDialogRef.actionDispatcher.open();
     })
   );
+
+  // const debugDoneDialog = actionStreams.onDoneDialogRef.pipe(
+  //   op.map(action => action.payload),
+  //   op.filter(dialogRef => dialogRef != null),
+  //   op.take(1),
+  //   op.map((doneDialogRef) => {
+  //     doneDialogRef!.actionDispatcher.open();
+  //   })
+  // );
   return rx.merge(
     handleRequestButton,
     makeDialogLayoutResponsive,
     liftUpInviteFormState,
     observeSendAction,
-    handleDoneDialogShow,
-    actionStreams.onDoneDialogRef.pipe(
-      op.map(action => action.payload),
-      op.filter(dialogRef => dialogRef != null),
-      op.take(1),
-      op.map((doneDialogRef) => {
-        doneDialogRef!.actionDispatcher.open();
-      })
-    )
+    handleDoneDialogShow
   ).pipe(
     op.catchError((ex, src) => {
       // eslint-disable-next-line no-console

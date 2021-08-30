@@ -52,7 +52,7 @@ const Landing: React.FC<InjectedCompPropsType<typeof ConnectHOC>> = function(pro
 
   return <div className={styles.scope}>
 
-      <Surface className={styles.banner}>
+      <Surface className={styles.banner} animateDelay={1500}>
         <h1>A better way</h1>
         <h1>to enjoy every day.</h1>
         <div className={styles.subtitle}>Be the first to know when we launch.</div>
@@ -71,7 +71,7 @@ const Landing: React.FC<InjectedCompPropsType<typeof ConnectHOC>> = function(pro
         </div>
       </Dialog>
 
-      <Dialog title='All done!' sliceRef={actionDispatcher.onDoneDialogRef}>
+      <Dialog title='All done!' sliceRef={actionDispatcher.onDoneDialogRef} modal={true}>
         <div className={styles.doneDialogContent}>
           <h4>You will be one of the first to experience</h4>
           <h4>Broccoli & Co. when we launch.</h4>

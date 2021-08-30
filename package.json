@@ -4,19 +4,24 @@
   "description": "Airwallex interview practise",
   "private": true,
   "scripts": {
-    "plink": "plink",
-    "dev:init": "npm i && plink project add . && plink sync cra-space",
+    "init": "npm i && plink project add .",
+    "start": "plink sync server-space  && cd server-space && plink aw:demo",
+    "dev:start": "plink sync server-space && plink sync cra-space && cd server-space && plink aw:dev-start",
+    "build": "cd cra-space && plink cra-build app aw-main",
+    "ls": "plink ls --hoist",
     "dev:init:with-plink": "node ${PLINK_REPO}/main/bin/link.js  && plink install && plink project add ${PLINK_REPO} . && plink sync cra-space",
+    "lint": "eslint -c .eslintrc.js --ext .ts ",
     "dev:proxy": "plink sync server-space && cd server-space && node app -c conf/devServerProxy.ts",
-    "dev:start": "plink sync cra-space && cd cra-space && plink cra-start --prop @wfh/cra-scripts.openBrowser=http://localhost:8080 aw-main",
-    "lint": "eslint -c .eslintrc.js --ext .ts "
+    "plink": "plink"
   },
   "author": "LJ",
   "license": "NOLICENSED",
-  "packages": ["packages",
-    "server-space/conf"],
+  "packages": [
+    "packages",
+    "server-space/conf"
+  ],
   "dependencies": {
-    "@wfh/plink": "./tarballs/wfh-plink-0.11.18-4.tgz"
+    "@wfh/plink": "./tarballs/wfh-plink-0.11.18-5.tgz"
   },
   "devDependencies": {
     "eslint-config-react-app": "^6.0.0",

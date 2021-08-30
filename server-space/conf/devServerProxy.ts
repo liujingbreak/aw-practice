@@ -7,7 +7,7 @@ const workspaceSetting: ConfigHandler & InjectorConfigHandler = {
   /** Change settings of Plink and other Plink compliant packages */
   onConfig(setting: DrcpSettings, cliOpt: NonNullable<DrcpSettings['cliOptions']>): void {
     // Run command "plink setting" to see details of setting properties
-    setting.port = 8080;
+    setting.port = 14334;
     setting['@wfh/assets-processer'].proxyToDevServer = {target: 'http://localhost:14333'};
   },
   /** For Node.js runtime, replace module in "require()" or import syntax */

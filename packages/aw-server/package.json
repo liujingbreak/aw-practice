@@ -4,6 +4,7 @@
   "description": "A static assets server for production demonstration, a proxy server for development",
   "main": "dist/server.js",
   "plink": {
+    "cli": "dist/cli/cli.js#default",
     "type": ["server"]
   },
   "author": "LJ",
