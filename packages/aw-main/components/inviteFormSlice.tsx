@@ -5,6 +5,7 @@ import * as rx from 'rxjs';
 import {Immutable} from 'immer';
 import React from 'react';
 import type {FormTextFieldSlice} from '@wfh/doc-ui-common/client/material/FormTextField';
+import {InviteFormRequestBody} from '../isom/types';
 // Define component properties
 export type InviteFormProps = React.PropsWithChildren<{
   className?: string;
@@ -12,9 +13,7 @@ export type InviteFormProps = React.PropsWithChildren<{
   sliceRef?(sliceHelper: InviteFormSliceHelper | null): void;
 }>;
 
-type InviteFormData = {
-  name: string;
-  email: string;
+type InviteFormData = InviteFormRequestBody & {
   confirmEmail: string;
 };
 // Define internal state

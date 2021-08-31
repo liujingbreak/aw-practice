@@ -6,7 +6,7 @@
   - [Run in development mode](#run-in-development-mode)
 - [Source code structure](#source-code-structure)
   - [Slice, Epic and dependencies](#slice-epic-and-dependencies)
-  - [Reading source code in Visual code without "missing type" error](#reading-source-code-in-visual-code-without-missing-type-error)
+  - [Reading source code in Visual studio code without "missing type" error](#reading-source-code-in-visual-studio-code-without-missing-type-error)
 
 <!-- /TOC -->
 
@@ -37,7 +37,7 @@ npm run dev:start
 ```bash
    /
    |- packages/ # source code organized in package directories
-   |   |- aw-main # client side source code
+   |   |- aw-main # client side feature directory
    |   |  |- components/  # Non-page level components
    |   |  |- configurable/  # route files
    |   |  |- main/  # App level entry component
@@ -61,7 +61,7 @@ npm run dev:start
     - `addEpic()` which observes incoming `reducer action` and `state changing event`, react with [RxJS](https://rxjs-dev.firebaseapp.com/) based operations as **side effect**.
 
 - **Epic** in those `*Slice.tsx?` files is concept of [redux-observable](https://redux-observable.js.org/), an alternative approach to using `React.useEffect()`.
-  > Compare with React hooks, Redux-observable (RxJS) offers better time based manipulation ability of async logic, and play _side effect_ with not only `state` changes but also `action` streams.
+  > Compare with React hooks, Redux-observable (RxJS) offers better time based manipulation ability of async logic, and play _side effect_ against not only `state` changes but also `action` streams.
 
 - **Plink** command used in package.json's `scripts` is open source monorepo management tool [https://gitee.com/liujingbreak/dr-comp-package](https://gitee.com/liujingbreak/dr-comp-package)
 
@@ -71,13 +71,16 @@ npm run dev:start
 
   - [@wfh/redux-toolkit-observable](https://gitee.com/liujingbreak/dr-comp-package/tree/master/main/redux-toolkit-observable) A better Typescript friendly wrapper of Redux-toolkit with Redux-observable
 
-> Client sided node packages in `tarballs/` actually contains source files without compilation, so you may navigate the source code by Visual Studio Code type interence.
-### Reading source code in Visual code without "missing type" error
+> Client side node packages in `tarballs/` actually contains source TS files without compilation, so they can be browsed by following Visual Studio Code type interence.
+### Reading source code in Visual studio code without "missing type" error
 A monorepo needs to switching `workspace tree` for changing top level tsconfig.json file to make Visual Studio Code be able to inference dependencies for specific source code package.
 
-- Before read source code of `packages/aw-main`, ensure current workspace-tree is `cra-space/` by either `npm run start` is the last command you ran, or by command:
+- Before read source code of `packages/aw-main`, please ensure current workspace-tree is `cra-space/` by either `npm run start` is the last command you ran, or executing command:
 ```bash
+# switch space
 npm run plink -- sync cra-space
+# check whether "cra-space" is highlighted
+npm run plink -- ls
 ```
 
 

@@ -15,13 +15,13 @@ const InviteForm: React.FC<InviteFormProps> = function(props) {
 
   return <div className={cls(styles.scope, props.className)} onKeyDown={slice.actionDispatcher.onkeydown}>
     <FormTextField name='name' sliceRef={onFormFieldSliceReady}
-      hintText='Full name' isRequired/>
+      hintText='Full name' isRequired minLength={3} helperTextContent='3 characters at least'/>
 
     <FormTextField name='email' sliceRef={onFormFieldSliceReady}
-      hintText='Email' inputType='email' isRequired/>
+      hintText='Email' inputType='email' isRequired helperTextContent=''/>
 
     <FormTextField name='confirmEmail' sliceRef={onFormFieldSliceReady}
-      hintText='Confirm email'inputType='email' isRequired/>
+      hintText='Confirm email'inputType='email' isRequired helperTextContent=''/>
   </div>;
 };
 

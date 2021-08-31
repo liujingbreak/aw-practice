@@ -5,7 +5,8 @@ import * as rx from 'rxjs';
 import {ajax, AjaxError} from 'rxjs/ajax';
 import {DialogSliceHelper} from '@wfh/doc-ui-common/client/material/dialogSlice';
 import {InviteFormSliceHelper} from '../components/inviteFormSlice';
-import {useAppLayout} from '@wfh/doc-ui-common/client/components/appLayout.state';
+import type {useAppLayout} from '@wfh/doc-ui-common/client/components/appLayout.state';
+import {InviteFormRequestBody} from '../isom/types';
 export interface LandingState {
   requestBtnDisabled: boolean;
   sendBtnDisabled: boolean;
@@ -36,9 +37,6 @@ const simplyReducers = {
   send(s: LandingState) {
     s.sending = 'wip'; // in-progress
     s.sendingErrorMsg = undefined;
-  },
-  _sendFailed(s: LandingState, msg: string) {
-    s.sendingErrorMsg = msg;
   },
   _showDoneDialog(s: LandingState) {}
 };
@@ -108,7 +106,9 @@ const releaseEpic = stateFactory.addEpic<{Landing: LandingState}>((action$, stat
     op.exhaustMap(() => {
       const formData = getState().inviteForm?.getState().data;
       if (formData) {
-        return ajax.post('/api/prod/fake-auth', formData, {
+        const reqBody = {...formData};
+        delete (reqBody as Partial<typeof formData>).confirmEmail;
+        return ajax.post('/api/prod/fake-auth', reqBody as InviteFormRequestBody, {
           'Content-Type': 'application/json'
         })
         .pipe(
@@ -121,7 +121,10 @@ const releaseEpic = stateFactory.addEpic<{Landing: LandingState}>((action$, stat
           }),
           op.catchError((err: AjaxError | Error) => {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            dispatcher._sendFailed((err as AjaxError)?.response?.errorMessage || err.message );
+            dispatcher._change(s => {
+              s.sendingErrorMsg = (err as AjaxError)?.response?.errorMessage || err.message;
+            });
+
             return rx.EMPTY;
           }),
           op.finalize(() => {
