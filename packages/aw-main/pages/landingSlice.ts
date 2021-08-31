@@ -2,7 +2,7 @@ import { stateFactory } from '@wfh/redux-toolkit-observable/es/state-factory-bro
 import {createReducers, RegularReducers, castByActionType} from '@wfh/redux-toolkit-observable/es/helper';
 import * as op from 'rxjs/operators';
 import * as rx from 'rxjs';
-import {ajax, AjaxError} from 'rxjs/ajax';
+import {ajax, AjaxError, AjaxResponse} from 'rxjs/ajax';
 import {DialogSliceHelper} from '@wfh/doc-ui-common/client/material/dialogSlice';
 import {InviteFormSliceHelper} from '../components/inviteFormSlice';
 import type {useAppLayout} from '@wfh/doc-ui-common/client/components/appLayout.state';
@@ -108,11 +108,17 @@ const releaseEpic = stateFactory.addEpic<{Landing: LandingState}>((action$, stat
       if (formData) {
         const reqBody = {...formData};
         delete (reqBody as Partial<typeof formData>).confirmEmail;
-        return ajax.post('/api/prod/fake-auth', reqBody as InviteFormRequestBody, {
-          'Content-Type': 'application/json'
-        })
-        .pipe(
-          op.tap(res => {
+        if (process.env.REACT_APP_deploy) {
+
+        }
+
+        return (process.env.REACT_APP_deploy ?
+          mockApiCall$ :
+          ajax.post('/api/prod/fake-auth', reqBody as InviteFormRequestBody, {
+            'Content-Type': 'application/json'
+          })
+        ).pipe(
+          op.map(res => {
             if (res.response === 'Registered') {
               dispatcher._showDoneDialog();
             } else {
@@ -201,3 +207,13 @@ if (module.hot) {
     releaseEpic();
   });
 }
+
+/**
+ * For hosted on github.io
+ */
+const mockApiCall$ = rx.timer(500).pipe(
+  op.mergeMap(() => Math.random() > 0.5 ?
+    rx.of({response: 'Registered'} as AjaxResponse) :
+    rx.throwError(new Error('mock error')) 
+  )
+);

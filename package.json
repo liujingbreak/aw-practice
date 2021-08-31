@@ -8,6 +8,7 @@
     "start": "plink sync server-space  && cd server-space && plink aw:demo",
     "dev:start": "plink sync server-space && plink sync cra-space && cd server-space && plink aw:dev-start",
     "build": "cd cra-space && plink cra-build app aw-main",
+    "github:build": "cd cra-space && plink cra-build -c conf/build-github.ts app aw-main",
     "ls": "plink ls --hoist",
     "dev:init:with-plink": "node ${PLINK_REPO}/main/bin/link.js  && plink install && plink project add ${PLINK_REPO} . && plink sync cra-space",
     "lint": "eslint -c .eslintrc.js --ext .ts ",
@@ -18,7 +19,8 @@
   "license": "NOLICENSED",
   "packages": [
     "packages",
-    "server-space/conf"
+    "server-space/conf",
+    "cra-space/conf"
   ],
   "dependencies": {
     "@wfh/plink": "./tarballs/wfh-plink-0.11.18-5.tgz"

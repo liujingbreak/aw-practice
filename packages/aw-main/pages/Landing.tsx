@@ -52,7 +52,7 @@ const Landing: React.FC<InjectedCompPropsType<typeof ConnectHOC>> = function(pro
 
   return <div className={styles.scope}>
 
-      <Surface className={styles.banner} animateDelay={1500}>
+      <Surface className={styles.banner} animateDelay={700}>
         <h1>A better way</h1>
         <h1>to enjoy every day.</h1>
         <div className={styles.subtitle}>Be the first to know when we launch.</div>
@@ -64,6 +64,7 @@ const Landing: React.FC<InjectedCompPropsType<typeof ConnectHOC>> = function(pro
           modal={false}
           buttonsRenderer={inviteDialogBtnRenderer}>
         <div className={styles.inviteDialogContent}>
+          {process.env.REACT_APP_deploy === 'github' ? '(As in a static host, API request won\'t be sent)' : ''}
           <InviteForm className={styles.inviteForm} onSubmit={actionDispatcher.send}
             sliceRef={actionDispatcher.onInviteFormRef}
           />
